@@ -1,0 +1,16 @@
+name: LambdaEconomy
+version: '${project.version}'
+main: at.lambdaspg.lambdaeconomy.LambdaEconomy
+api-version: 1.16
+authors: [ LambdaSpg ]
+description: Economy Plugin
+
+commands:
+  ecoset:
+    description: EcoSet
+  ecoget:
+    description: EcoGet
+    aliases: [money]
+  createaccount:
+    description: create account
+    aliases: [ecoca]
