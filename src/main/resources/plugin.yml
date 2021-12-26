@@ -10,7 +10,4 @@ commands:
     description: EcoSet
   ecoget:
     description: EcoGet
-    aliases: [money]
-  createaccount:
-    description: create account
-    aliases: [ecoca]
+    aliases: [money, bal, balance]

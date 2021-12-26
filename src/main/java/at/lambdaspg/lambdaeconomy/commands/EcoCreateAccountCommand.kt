@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
+@Deprecated("This Command is not to be used because account creation is done automatically on joining the server")
 class EcoCreateAccountCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender is Player) {

@@ -5,6 +5,7 @@ import at.lambdaspg.lambdaeconomy.commands.EcoGetCommand
 import at.lambdaspg.lambdaeconomy.commands.EcoSetCommand
 import at.lambdaspg.lambdaeconomy.economy.EconomyCore
 import at.lambdaspg.lambdaeconomy.economy.EconomyHandler
+import at.lambdaspg.lambdaeconomy.listeners.PlayerJoinListener
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.plugin.ServicePriority
 import org.bukkit.plugin.java.JavaPlugin
@@ -46,12 +47,20 @@ class LambdaEconomy : JavaPlugin() {
         }
 
         setupCommands()
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+        server.pluginManager.registerEvents(PlayerJoinListener(), this)
     }
 
     private fun setupCommands() {
         getCommand("ecoset")!!.setExecutor(EcoSetCommand())
-        getCommand("ecoget")!!.setExecutor(EcoGetCommand())
-        getCommand("createaccount")!!.setExecutor(EcoCreateAccountCommand())
+        getCommand("ecoget")!!.also { s ->
+            s.setExecutor(EcoGetCommand())
+            s.tabCompleter = EcoGetCommand()
+        }
+        //getCommand("createaccount")!!.setExecutor(EcoCreateAccountCommand())
     }
 
     private fun setupDatabase() {
