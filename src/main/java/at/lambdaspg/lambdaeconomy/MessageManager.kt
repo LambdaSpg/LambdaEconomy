@@ -40,6 +40,6 @@ object MessageManager {
     }
 
     fun noPermission(player: Player){
-        sendPlayerError("Du darfst diesen Command nicht ausführen", player);
+        sendPlayerError("You are not allowed to execute this command", player);
     }
 }

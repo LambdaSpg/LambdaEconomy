@@ -22,12 +22,12 @@ class EcoGetCommand : CommandExecutor, TabCompleter {
                     }
                     val target: Player? = Bukkit.getPlayer(args[0])
                     if(target != null){
-                        MessageManager.sendPlayerInfo("Der Spieler ${target.name} hat ${ecoHandler.getMoney(p.uniqueId)}${ecoCore.currencySign()}", p)
-                    }else MessageManager.sendPlayerError("Dieser Spieler existiert nicht", p);
+                        MessageManager.sendPlayerInfo("The Player ${target.name} has ${ecoHandler.getMoney(p.uniqueId)}${ecoCore.currencySign()}", p)
+                    }else MessageManager.sendPlayerError("This Player does not exist", p);
                 }else {
                     if(ecoHandler.containsPlayer(p.uniqueId)) {
-                        MessageManager.sendPlayerInfo("Du hast ${ecoHandler.getMoney(p.uniqueId)}${ecoCore.currencySign()}", p)
-                    }else MessageManager.sendPlayerError("Du besitzt keinen Account, dies ist ziemlich sicher ein Fehler, bitte melde dich bei einem Administrator", p)
+                        MessageManager.sendPlayerInfo("You have ${ecoHandler.getMoney(p.uniqueId)}${ecoCore.currencySign()}", p)
+                    }else MessageManager.sendPlayerError("You do not have an account, this is almost certainly a mistake, please contact an administrator.", p)
                 }
             }
         }

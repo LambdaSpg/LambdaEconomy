@@ -21,15 +21,15 @@ class EcoSetCommand : CommandExecutor, TabCompleter {
                     try {
                        money = args[0].toDouble()
                     }catch(e: NumberFormatException){
-                        MessageManager.sendPlayerError("Bitte verwende /ecoset money player", p)
+                        MessageManager.sendPlayerError("Please use /ecoset money player", p)
                         return false;
                     }
 
                     if(ecoCore.setPlayer(p, money)) {
-                        MessageManager.sendPlayerGood("Du hast dein Geld auf ${money}€ gesetzt", p)
-                        MessageManager.sendConsoleEco("Das Geld von ${p.name} wurde auf ${money}${ecoCore.currencySign()} gesetzt (von: ${p.name})")
+                        MessageManager.sendPlayerGood("You set your balance to ${money}${ecoCore.currencySign()}", p)
+                        MessageManager.sendConsoleEco("The balance of ${p.name} has been set to ${money}${ecoCore.currencySign()} (by: ${p.name})")
                     }else {
-                        MessageManager.sendPlayerError("Etwas ist schiefgegangen, bitte versuche es später erneut", p)
+                        MessageManager.sendPlayerError("Something went wrong, please try again later", p)
                     }
                 }else if(args.size == 2){
                     var money: Double = 0.0
@@ -41,12 +41,12 @@ class EcoSetCommand : CommandExecutor, TabCompleter {
                     val target: Player? = Bukkit.getPlayer(args[1])
 
                     if(target != null && ecoCore.setPlayer(target, money)) {
-                        MessageManager.sendPlayerGood("Du hast das Geld von ${target.name} auf ${money}€ gesetzt", p)
-                        MessageManager.sendConsoleEco("Das Geld von ${target.name} wurde auf ${money}${ecoCore.currencySign()} gesetzt (von: ${p.name})")
+                        MessageManager.sendPlayerGood("You have set the balance of ${target.name} to ${money}${ecoCore.currencySign()}", p)
+                        MessageManager.sendConsoleEco("The balance of ${target.name} has been set to ${money}${ecoCore.currencySign()} (by: ${p.name})")
                     }else {
-                        MessageManager.sendPlayerError("Etwas ist schiefgegangen, bitte versuche es später erneut", p)
+                        MessageManager.sendPlayerError("Something went wrong, please try again later", p)
                     }
-                }else MessageManager.sendPlayerError("Bitte verwende /ecoset <amount> [player]", p)
+                }else MessageManager.sendPlayerError("Please use /ecoset money player", p)
             } else MessageManager.noPermission(p)
         }
 
