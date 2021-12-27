@@ -7,10 +7,11 @@ import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 import java.lang.NumberFormatException
 
-class EcoSetCommand : CommandExecutor {
+class EcoSetCommand : CommandExecutor, TabCompleter {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if(sender is Player){
             val p: Player = sender
@@ -20,7 +21,8 @@ class EcoSetCommand : CommandExecutor {
                     try {
                        money = args[0].toDouble()
                     }catch(e: NumberFormatException){
-                        e.printStackTrace()
+                        MessageManager.sendPlayerError("Bitte verwende /ecoset money player", p)
+                        return false;
                     }
 
                     if(ecoCore.setPlayer(p, money)) {
@@ -36,10 +38,10 @@ class EcoSetCommand : CommandExecutor {
                     }catch(e: NumberFormatException){
                         e.printStackTrace()
                     }
-                    var target: Player? = Bukkit.getPlayer(args[1])
+                    val target: Player? = Bukkit.getPlayer(args[1])
 
                     if(target != null && ecoCore.setPlayer(target, money)) {
-                        MessageManager.sendPlayerGood("Du hast das Geld von $target auf ${money}€ gesetzt", p)
+                        MessageManager.sendPlayerGood("Du hast das Geld von ${target.name} auf ${money}€ gesetzt", p)
                         MessageManager.sendConsoleEco("Das Geld von ${target.name} wurde auf ${money}${ecoCore.currencySign()} gesetzt (von: ${p.name})")
                     }else {
                         MessageManager.sendPlayerError("Etwas ist schiefgegangen, bitte versuche es später erneut", p)
@@ -49,5 +51,16 @@ class EcoSetCommand : CommandExecutor {
         }
 
         return false
+    }
+
+    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String>? {
+        val list: ArrayList<String> = ArrayList()
+        if(args.size == 1){
+            list.add("amount")
+        }else if(args.size == 2){
+            Bukkit.getOnlinePlayers().forEach { all -> list.add(all.name) }
+        }
+
+        return list;
     }
 }

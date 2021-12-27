@@ -4,12 +4,12 @@ import org.bukkit.Bukkit.getServer
 import org.bukkit.entity.Player
 
 object MessageManager {
-    const val server = "§9Server"
-    const val prefix = "$server |§7"
+    val server = "§9${LambdaEconomy.getConfig().get("Server.name")}"
+    val prefix = "$server |§7"
 
-    private const val good = "$prefix§2 "
-    private const val info = "$prefix§e "
-    private const val error = "$prefix§4 "
+    private val good = "$prefix§2 "
+    private val info = "$prefix§e "
+    private val error = "$prefix§4 "
 
     fun sendConsoleGood(text: String){
         getServer().consoleSender.sendMessage(good + text)

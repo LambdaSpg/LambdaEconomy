@@ -3,6 +3,7 @@ version: '${project.version}'
 main: at.lambdaspg.lambdaeconomy.LambdaEconomy
 api-version: 1.16
 authors: [ LambdaSpg ]
+depend: [Vault]
 description: Economy Plugin
 
 commands:

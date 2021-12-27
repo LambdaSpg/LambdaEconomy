@@ -15,9 +15,9 @@ class EconomyHandler() {
         var ecoList = ArrayList<UUID>()
         var connectionString: String = LambdaEconomy.getDatabaseConnectionString()
         const val startMoney: Double = 500.0
-        const val currencyP = "Euro"
-        const val currencyS = "Euro"
-        const val currencySign = "€"
+        val currencyP = LambdaEconomy.configuration.getString("Server.currency.plural")!!
+        val currencyS = LambdaEconomy.configuration.getString("Server.currency.singular")!!
+        val currencySign = LambdaEconomy.configuration.getString("Server.currency.sign")!!
     }
 
 

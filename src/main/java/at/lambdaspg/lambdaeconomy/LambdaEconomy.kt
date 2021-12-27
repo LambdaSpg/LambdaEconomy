@@ -7,6 +7,7 @@ import at.lambdaspg.lambdaeconomy.economy.EconomyCore
 import at.lambdaspg.lambdaeconomy.economy.EconomyHandler
 import at.lambdaspg.lambdaeconomy.listeners.PlayerJoinListener
 import net.milkbowl.vault.economy.Economy
+import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.bukkit.plugin.java.JavaPlugin
 import java.sql.Connection
@@ -19,6 +20,7 @@ class LambdaEconomy : JavaPlugin() {
         lateinit var plugin: LambdaEconomy
         lateinit var connectionS: String
         lateinit var ecoHandler: EconomyHandler
+        lateinit var configuration: FileConfiguration
 
         fun getInstance() : LambdaEconomy{
             return plugin;
@@ -31,10 +33,17 @@ class LambdaEconomy : JavaPlugin() {
         fun getDatabaseConnectionString() : String{
             return connectionS
         }
+
+        fun getConfig() : FileConfiguration{
+            return this.configuration
+        }
     }
 
     override fun onEnable() {
         plugin = this;
+
+        configuration = config;
+        setupConfig()
         setupDatabase()
         instanceClasses()
 
@@ -48,6 +57,18 @@ class LambdaEconomy : JavaPlugin() {
 
         setupCommands()
         setupListeners()
+    }
+
+    private fun setupConfig() {
+        if(config.getString("Server.name") == null) {
+            config.set("Server.name", "ChangeInConfig")
+            config.set("Server.currency.singular", "Euro")
+            config.set("Server.currency.plural", "Euro")
+            config.set("Server.currency.sign", "€")
+        }
+
+        this.saveConfig()
+        this.saveDefaultConfig()
     }
 
     private fun setupListeners() {
@@ -64,7 +85,7 @@ class LambdaEconomy : JavaPlugin() {
     }
 
     private fun setupDatabase() {
-        this.saveDefaultConfig()
+
         connectionS = "jdbc:sqlite:${dataFolder}\\economy.db"
 
         val connection: Connection = DriverManager.getConnection(connectionS)

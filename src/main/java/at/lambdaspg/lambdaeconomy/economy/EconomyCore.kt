@@ -31,7 +31,7 @@ class EconomyCore : Economy {
     }
 
     override fun format(amount: Double): String {
-        TODO("Not yet implemented")
+        return "${amount} ${currencyNamePlural()}"
     }
 
     override fun currencyNamePlural(): String {
