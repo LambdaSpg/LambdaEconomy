@@ -53,7 +53,7 @@ class EcoSetCommand : CommandExecutor, TabCompleter {
         return false
     }
 
-    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String>? {
+    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         val list: ArrayList<String> = ArrayList()
         if(args.size == 1){
             list.add("amount")
