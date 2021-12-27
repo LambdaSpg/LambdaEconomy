@@ -1,12 +1,12 @@
 package at.lambdaspg.lambdaeconomy
 
-import at.lambdaspg.lambdaeconomy.commands.EcoCreateAccountCommand
 import at.lambdaspg.lambdaeconomy.commands.EcoGetCommand
 import at.lambdaspg.lambdaeconomy.commands.EcoSetCommand
 import at.lambdaspg.lambdaeconomy.economy.EconomyCore
 import at.lambdaspg.lambdaeconomy.economy.EconomyHandler
 import at.lambdaspg.lambdaeconomy.listeners.PlayerJoinListener
 import net.milkbowl.vault.economy.Economy
+import org.bstats.bukkit.Metrics
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.bukkit.plugin.java.JavaPlugin
@@ -57,6 +57,7 @@ class LambdaEconomy : JavaPlugin() {
 
         setupCommands()
         setupListeners()
+        val metrics = Metrics(this, 13744)
     }
 
     private fun setupConfig() {
