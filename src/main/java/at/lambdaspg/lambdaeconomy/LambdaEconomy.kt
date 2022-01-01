@@ -57,6 +57,7 @@ class LambdaEconomy : JavaPlugin() {
 
         setupCommands()
         setupListeners()
+
         val metrics = Metrics(this, 13744)
     }
 
