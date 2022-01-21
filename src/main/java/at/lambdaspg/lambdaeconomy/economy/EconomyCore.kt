@@ -70,9 +70,8 @@ class EconomyCore : Economy {
     }
 
     override fun getBalance(playerName: String?): Double {
-        val uuid = nameToUUID(playerName)
-        if(uuid != null){
-            return ecoHandler.getMoney(uuid)
+        if(playerName != null){
+            return ecoHandler.getMoney(playerName)
         }
         return 0.0
     }
@@ -172,6 +171,10 @@ class EconomyCore : Economy {
         return false;
     }
 
+    fun setPlayer(name: String, amount: Double) : Boolean{
+        return ecoHandler.setMoney(name, amount)
+    }
+
     override fun createBank(name: String?, player: String?): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -223,7 +226,7 @@ class EconomyCore : Economy {
     override fun createPlayerAccount(playerName: String?): Boolean {
         val uuid: UUID? = nameToUUID(playerName)
         if(uuid != null) {
-            return ecoHandler.addPlayer(uuid, startMoney)
+            return ecoHandler.addPlayer(uuid, startMoney, playerName!!)
         }
 
         return false;
@@ -231,7 +234,7 @@ class EconomyCore : Economy {
 
     override fun createPlayerAccount(player: OfflinePlayer?): Boolean {
         if(player != null){
-            return ecoHandler.addPlayer(player.uniqueId, startMoney)
+            return ecoHandler.addPlayer(player.uniqueId, startMoney, player.name!!)
         }
         return false
     }

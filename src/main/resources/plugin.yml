@@ -7,8 +7,5 @@ depend: [Vault]
 description: Economy Plugin
 
 commands:
-  ecoset:
-    description: EcoSet
-  ecoget:
-    description: EcoGet
-    aliases: [money, bal, balance]
+  eco:
+    description: Economy Command

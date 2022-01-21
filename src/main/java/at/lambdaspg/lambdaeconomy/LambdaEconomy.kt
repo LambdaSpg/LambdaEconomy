@@ -1,12 +1,16 @@
 package at.lambdaspg.lambdaeconomy
 
-import at.lambdaspg.lambdaeconomy.commands.EcoGetCommand
-import at.lambdaspg.lambdaeconomy.commands.EcoSetCommand
+
+import at.lambdaspg.lambdaeconomy.bStats.Metrics
+import at.lambdaspg.lambdaeconomy.commands.EcoCommandManager
+import at.lambdaspg.lambdaeconomy.commands.old.EcoGetCommand
+import at.lambdaspg.lambdaeconomy.commands.old.EcoGiveCommand
+import at.lambdaspg.lambdaeconomy.commands.old.EcoSetCommand
+import at.lambdaspg.lambdaeconomy.commands.old.EcoTakeCommand
 import at.lambdaspg.lambdaeconomy.economy.EconomyCore
 import at.lambdaspg.lambdaeconomy.economy.EconomyHandler
 import at.lambdaspg.lambdaeconomy.listeners.PlayerJoinListener
 import net.milkbowl.vault.economy.Economy
-import org.bstats.bukkit.Metrics
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.bukkit.plugin.java.JavaPlugin
@@ -78,23 +82,24 @@ class LambdaEconomy : JavaPlugin() {
     }
 
     private fun setupCommands() {
-        getCommand("ecoset")!!.setExecutor(EcoSetCommand())
-        getCommand("ecoget")!!.also { s ->
-            s.setExecutor(EcoGetCommand())
-            s.tabCompleter = EcoGetCommand()
+        getCommand("eco")!!.also { s ->
+            val ecoCommandManager = EcoCommandManager()
+            s.setExecutor(ecoCommandManager)
+            s.tabCompleter = ecoCommandManager
         }
+
         //getCommand("createaccount")!!.setExecutor(EcoCreateAccountCommand())
     }
 
     private fun setupDatabase() {
-
-        connectionS = "jdbc:sqlite:${dataFolder}\\economy.db"
+        if(!dataFolder.exists())dataFolder.mkdir()
+        connectionS = "jdbc:sqlite:${dataFolder}/economy.db"
 
         val connection: Connection = DriverManager.getConnection(connectionS)
         val statement = connection.createStatement()
         statement.queryTimeout = 30
 
-        statement.executeUpdate("create table if not exists MONEY(id STRING, money DOUBLE)")
+        statement.executeUpdate("create table if not exists MONEY(id STRING, money DOUBLE, name STRING)")
         connection.close()
     }
 

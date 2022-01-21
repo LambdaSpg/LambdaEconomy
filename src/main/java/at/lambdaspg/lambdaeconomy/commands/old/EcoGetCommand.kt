@@ -1,4 +1,4 @@
-package at.lambdaspg.lambdaeconomy.commands
+package at.lambdaspg.lambdaeconomy.commands.old
 
 import at.lambdaspg.lambdaeconomy.LambdaEconomy.Companion.ecoCore
 import at.lambdaspg.lambdaeconomy.LambdaEconomy.Companion.ecoHandler

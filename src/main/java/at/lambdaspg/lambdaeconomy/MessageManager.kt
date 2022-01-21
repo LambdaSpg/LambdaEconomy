@@ -42,4 +42,8 @@ object MessageManager {
     fun noPermission(player: Player){
         sendPlayerError("You are not allowed to execute this command", player);
     }
+
+    fun sendEcoChange(target: Player, targeter: Player, money: Double){
+        sendConsoleEco("The balance of ${target.name} has been set to ${money}${LambdaEconomy.ecoCore.currencySign()} (by: ${targeter.name})")
+    }
 }

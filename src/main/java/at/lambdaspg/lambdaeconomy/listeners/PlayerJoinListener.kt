@@ -13,7 +13,7 @@ class PlayerJoinListener : Listener{
         if(LambdaEconomy.ecoHandler.containsPlayer(p.uniqueId)){
             return;
         }else {
-            LambdaEconomy.ecoHandler.addPlayer(p.uniqueId);
+            LambdaEconomy.ecoHandler.addPlayer(p.uniqueId, p.name);
             MessageManager.sendConsoleEco("Account has been created for ${p.name}")
         }
     }
