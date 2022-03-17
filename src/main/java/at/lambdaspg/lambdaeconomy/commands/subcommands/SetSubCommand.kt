@@ -1,5 +1,6 @@
 package at.lambdaspg.lambdaeconomy.commands.subcommands
 
+import at.lambdaspg.lambdaeconomy.ColorManager
 import at.lambdaspg.lambdaeconomy.LambdaEconomy
 import at.lambdaspg.lambdaeconomy.MessageManager
 import at.lambdaspg.lambdaeconomy.commands.SubCommand
@@ -24,8 +25,8 @@ class SetSubCommand : SubCommand {
                 }
 
                 if(LambdaEconomy.ecoCore.setPlayer(p, money)) {
-                    MessageManager.sendPlayerGood("You set your balance to ${money}${LambdaEconomy.ecoCore.currencySign()}", p)
-                    MessageManager.sendConsoleEco("The balance of ${p.name} has been set to ${money}${LambdaEconomy.ecoCore.currencySign()} (by: ${p.name})")
+                    MessageManager.sendPlayerGood("You set your balance to ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()}", p)
+                    MessageManager.sendConsoleEco("The balance of ${ColorManager.good()}${p.name} §7has been set to ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()} (by: ${p.name})")
                 }else {
                     MessageManager.sendPlayerError("Something went wrong, please try again later", p)
                 }
@@ -41,7 +42,7 @@ class SetSubCommand : SubCommand {
                 if(target == null) {
                     if (LambdaEconomy.ecoCore.setPlayer(args[2], money)) {
                         MessageManager.sendPlayerGood(
-                            "You have set the balance of ${args[2]} to ${money}${LambdaEconomy.ecoCore.currencySign()}", p
+                            "You have set the balance of ${ColorManager.good()}${args[2]} §7to ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()}", p
                         )
                         MessageManager.sendEcoChange(p, p, money)
                     } else {
@@ -50,7 +51,7 @@ class SetSubCommand : SubCommand {
                 }else {
                     if(LambdaEconomy.ecoCore.setPlayer(target, money)){
                         MessageManager.sendPlayerGood(
-                            "You have set the balance of ${args[2]} to ${money}${LambdaEconomy.ecoCore.currencySign()}", p
+                            "You have set the balance of ${ColorManager.good()}${args[2]} §7to ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()}", p
                         )
                         MessageManager.sendEcoChange(target, p, money)
                     } else {

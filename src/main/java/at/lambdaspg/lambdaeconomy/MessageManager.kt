@@ -4,12 +4,12 @@ import org.bukkit.Bukkit.getServer
 import org.bukkit.entity.Player
 
 object MessageManager {
-    val server = "§9${LambdaEconomy.getConfig().get("Server.name")}"
-    val prefix = "$server |§7"
+    val server = "${ColorManager.nalyda()}${LambdaEconomy.getConfig().get("Server.name")}"
+    val prefix = "$server §8»§7"
 
-    private val good = "$prefix§2 "
-    private val info = "$prefix§e "
-    private val error = "$prefix§4 "
+    private val good = "$prefix "
+    private val info = "$prefix "
+    private val error = "$prefix${ColorManager.bad()} "
 
     fun sendConsoleGood(text: String){
         getServer().consoleSender.sendMessage(good + text)
@@ -24,7 +24,9 @@ object MessageManager {
     }
 
     fun sendConsoleEco(text: String){
-        getServer().consoleSender.sendMessage("$info[ECO] | $text")
+        val s = "$info [ECO] | $text"
+        getServer().consoleSender.sendMessage(s)
+        FileManager.logEcoChange(text)
     }
 
     fun sendPlayerGood(text: String, player: Player){

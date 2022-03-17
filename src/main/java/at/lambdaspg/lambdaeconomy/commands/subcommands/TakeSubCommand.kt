@@ -1,5 +1,6 @@
 package at.lambdaspg.lambdaeconomy.commands.subcommands
 
+import at.lambdaspg.lambdaeconomy.ColorManager
 import at.lambdaspg.lambdaeconomy.LambdaEconomy
 import at.lambdaspg.lambdaeconomy.MessageManager
 import at.lambdaspg.lambdaeconomy.commands.SubCommand
@@ -24,7 +25,7 @@ class TakeSubCommand : SubCommand {
                 }
 
                 if(LambdaEconomy.ecoCore.setPlayer(p, LambdaEconomy.ecoCore.getBalance(p) - money)) {
-                    MessageManager.sendPlayerGood("You took yourself ${money}${LambdaEconomy.ecoCore.currencySign()}", p)
+                    MessageManager.sendPlayerGood("You took yourself ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()}", p)
                     MessageManager.sendEcoChange(p, p, money)
                 }else {
                     MessageManager.sendPlayerError("Something went wrong, please try again later", p)
@@ -40,14 +41,14 @@ class TakeSubCommand : SubCommand {
                 val target = Bukkit.getPlayer(args[2])
                 if(target == null) {
                     if (LambdaEconomy.ecoCore.setPlayer(args[2], LambdaEconomy.ecoCore.getBalance(args[2]) - money)) {
-                        MessageManager.sendPlayerGood("You took ${money}${LambdaEconomy.ecoCore.currencySign()} from ${args[2]}", p)
+                        MessageManager.sendPlayerGood("You took ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()} §7from ${ColorManager.good()}${args[2]}", p)
                         MessageManager.sendEcoChange(p, p, money)
                     } else {
                         MessageManager.sendPlayerError("Something went wrong, please try again later", p)
                     }
                 }else {
                     if(LambdaEconomy.ecoCore.setPlayer(target, LambdaEconomy.ecoCore.getBalance(target) -money)){
-                        MessageManager.sendPlayerGood("You took ${money}${LambdaEconomy.ecoCore.currencySign()} from ${args[2]}", p)
+                        MessageManager.sendPlayerGood("You took ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()} §7from ${ColorManager.good()}${args[2]}", p)
                         MessageManager.sendEcoChange(target, p, money)
                     } else {
                         MessageManager.sendPlayerError("Something went wrong, please try again later", p)

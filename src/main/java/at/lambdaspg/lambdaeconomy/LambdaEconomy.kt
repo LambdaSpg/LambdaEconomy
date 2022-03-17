@@ -3,10 +3,6 @@ package at.lambdaspg.lambdaeconomy
 
 import at.lambdaspg.lambdaeconomy.bStats.Metrics
 import at.lambdaspg.lambdaeconomy.commands.EcoCommandManager
-import at.lambdaspg.lambdaeconomy.commands.old.EcoGetCommand
-import at.lambdaspg.lambdaeconomy.commands.old.EcoGiveCommand
-import at.lambdaspg.lambdaeconomy.commands.old.EcoSetCommand
-import at.lambdaspg.lambdaeconomy.commands.old.EcoTakeCommand
 import at.lambdaspg.lambdaeconomy.economy.EconomyCore
 import at.lambdaspg.lambdaeconomy.economy.EconomyHandler
 import at.lambdaspg.lambdaeconomy.listeners.PlayerJoinListener

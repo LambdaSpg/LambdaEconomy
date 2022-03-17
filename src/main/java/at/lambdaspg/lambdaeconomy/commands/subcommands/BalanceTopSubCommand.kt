@@ -1,6 +1,8 @@
 package at.lambdaspg.lambdaeconomy.commands.subcommands
 
+import at.lambdaspg.lambdaeconomy.ColorManager
 import at.lambdaspg.lambdaeconomy.LambdaEconomy
+import at.lambdaspg.lambdaeconomy.MessageManager
 import at.lambdaspg.lambdaeconomy.commands.SubCommand
 import org.bukkit.entity.Player
 import java.util.*
@@ -19,16 +21,16 @@ class BalanceTopSubCommand : SubCommand {
             Collections.sort(
                 list
             ) { (_, value): Map.Entry<UUID, Double>, (_, value1): Map.Entry<UUID, Double> ->
-                java.lang.Double.compare(
-                    value,
-                    value1
-                ) * -1
+                value.compareTo(value1) * -1
             }
-            p.sendMessage("Top 10--------------------")
+            MessageManager.sendPlayerGood("--------------------------------", p)
+            var i = 0
             for ((key, value) in list) {
-                //TODO ("Add username to database and fetch it here (save the username on join)")
-                p.sendMessage("${LambdaEconomy.ecoHandler.getName(key)} - $value")
+                if(i == 9) break;
+                p.sendMessage("${MessageManager.prefix} ${LambdaEconomy.ecoHandler.getName(key)} - $value")
+                i++
             }
+            MessageManager.sendPlayerGood("--------------------------------", p)
         }
     }
 

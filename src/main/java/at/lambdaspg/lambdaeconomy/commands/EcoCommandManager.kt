@@ -34,13 +34,13 @@ class EcoCommandManager() : CommandExecutor, TabCompleter {
                     }
                 }
             }else {
-                p.sendMessage("${ColorManager.limePastelGreen()}--------------------------------")
+                p.sendMessage("§7--------------------------------")
                 for (i in 0 until getSubCommands().size) {
                     p.sendMessage(
-                        getSubCommands()[i].getSyntax() + " - " + getSubCommands()[i].getDescription()
+                        "${ColorManager.nalyda()}" + getSubCommands()[i].getSyntax() + " - " + getSubCommands()[i].getDescription()
                     )
                 }
-                p.sendMessage("${ColorManager.limePastelGreen()}--------------------------------")
+                p.sendMessage("§7--------------------------------")
             }
         }
         return false
