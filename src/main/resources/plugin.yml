@@ -9,3 +9,5 @@ description: Economy Plugin
 commands:
   eco:
     description: Economy Command
+  balance:
+    description: Balance Command

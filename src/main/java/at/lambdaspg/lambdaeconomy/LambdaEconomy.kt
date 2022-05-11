@@ -3,6 +3,7 @@ package at.lambdaspg.lambdaeconomy
 
 import at.lambdaspg.lambdaeconomy.bStats.Metrics
 import at.lambdaspg.lambdaeconomy.commands.EcoCommandManager
+import at.lambdaspg.lambdaeconomy.commands.BalanceCommand
 import at.lambdaspg.lambdaeconomy.economy.EconomyCore
 import at.lambdaspg.lambdaeconomy.economy.EconomyHandler
 import at.lambdaspg.lambdaeconomy.listeners.PlayerJoinListener
@@ -82,6 +83,12 @@ class LambdaEconomy : JavaPlugin() {
             val ecoCommandManager = EcoCommandManager()
             s.setExecutor(ecoCommandManager)
             s.tabCompleter = ecoCommandManager
+        }
+
+        getCommand("balance")!!.also { s ->
+            val balanceCommand = BalanceCommand()
+            s.setExecutor(balanceCommand)
+            s.tabCompleter = balanceCommand
         }
 
         //getCommand("createaccount")!!.setExecutor(EcoCreateAccountCommand())

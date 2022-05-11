@@ -48,7 +48,7 @@ class GiveSubCommand : SubCommand {
                     }
                 }else {
                     if(LambdaEconomy.ecoCore.setPlayer(target, LambdaEconomy.ecoCore.getBalance(target) + money)){
-                        MessageManager.sendPlayerGood("You gave ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()} $7to ${ColorManager.good()}${args[2]}", p)
+                        MessageManager.sendPlayerGood("You gave ${ColorManager.good()}${money}${LambdaEconomy.ecoCore.currencySign()} §7to ${ColorManager.good()}${args[2]}", p)
                         MessageManager.sendEcoChange(target, p, LambdaEconomy.ecoCore.getBalance(args[2]) + money)
                     } else {
                         MessageManager.sendPlayerError("Something went wrong, please try again later", p)

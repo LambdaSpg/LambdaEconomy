@@ -26,7 +26,7 @@ class BalanceTopSubCommand : SubCommand {
             MessageManager.sendPlayerGood("--------------------------------", p)
             var i = 0
             for ((key, value) in list) {
-                if(i == 9) break;
+                if(i == 9) break
                 p.sendMessage("${MessageManager.prefix} ${LambdaEconomy.ecoHandler.getName(key)} - $value")
                 i++
             }

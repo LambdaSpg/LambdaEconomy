@@ -21,11 +21,17 @@ class GetSubCommand : SubCommand {
                 }
                 val target: Player? = Bukkit.getPlayer(args[1])
                 if(target != null){
-                    MessageManager.sendPlayerInfo("The Player ${ColorManager.good()}${target.name} §7 has ${ColorManager.good()}${LambdaEconomy.ecoHandler.getMoney(p.uniqueId)}${LambdaEconomy.ecoCore.currencySign()}", p)
+                    val amount = LambdaEconomy.ecoHandler.getMoney(p.uniqueId)
+                    MessageManager.sendPlayerInfo(
+                        "The Player ${ColorManager.good()}${target.name} §7 " +
+                        "has ${if(amount > 0) ColorManager.good() else ColorManager.bad()}${amount}${LambdaEconomy.ecoCore.currencySign()}", p
+                    )
+
                 }else MessageManager.sendPlayerError("This Player does not exist", p);
             }else {
                 if(LambdaEconomy.ecoHandler.containsPlayer(p.uniqueId)) {
-                    MessageManager.sendPlayerInfo("You have ${ColorManager.good()}${LambdaEconomy.ecoHandler.getMoney(p.uniqueId)}${LambdaEconomy.ecoCore.currencySign()}", p)
+                    val amount = LambdaEconomy.ecoHandler.getMoney(p.uniqueId)
+                    MessageManager.sendPlayerInfo("You have ${if(amount > 0) ColorManager.good() else ColorManager.bad()}${amount}${LambdaEconomy.ecoCore.currencySign()}", p)
                 }else MessageManager.sendPlayerError("You do not have an account, this is almost certainly a mistake, please contact an administrator.", p)
             }
         } else MessageManager.noPermission(p)
