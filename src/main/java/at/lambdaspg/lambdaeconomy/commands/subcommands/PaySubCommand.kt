@@ -12,7 +12,7 @@ class PaySubCommand : SubCommand {
     }
 
     override fun perform(p: Player, args: Array<out String>) {
-        if(p.hasPermission("lambda.cmd.eco.pay")){
+        if(p.hasPermission("lambda.eco.pay")){
             if(args.size == 3){
                 var money: Double = 0.0
                 try {

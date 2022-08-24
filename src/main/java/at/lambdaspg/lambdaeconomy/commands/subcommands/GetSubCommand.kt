@@ -13,7 +13,7 @@ class GetSubCommand : SubCommand {
     }
 
     override fun perform(p: Player, args: Array<out String>) {
-        if (p.hasPermission("lambda.cmd.eco.get")) {
+        if (p.hasPermission("lambda.eco.get")) {
             if(args.size == 2){
                 if(!p.hasPermission("lambda.cmd.eco.get.others")) {
                     MessageManager.noPermission(p);

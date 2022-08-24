@@ -247,7 +247,7 @@ class EconomyCore : Economy {
         return createPlayerAccount(player)
     }
 
-    private fun  nameToUUID(name: String?) : UUID? {
+    private fun nameToUUID(name: String?) : UUID? {
         val url = URL("https://api.mojang.com/users/profiles/minecraft/$name")
 
         val conn: HttpURLConnection = url.openConnection() as HttpURLConnection

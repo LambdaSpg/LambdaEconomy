@@ -2,13 +2,11 @@ package at.lambdaspg.lambdaeconomy.commands
 
 import at.lambdaspg.lambdaeconomy.ColorManager
 import at.lambdaspg.lambdaeconomy.commands.subcommands.*
-import net.md_5.bungee.api.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
-import java.awt.Color
 
 class EcoCommandManager() : CommandExecutor, TabCompleter {
 
@@ -20,9 +18,7 @@ class EcoCommandManager() : CommandExecutor, TabCompleter {
         subCommands.add(TakeSubCommand())
         subCommands.add(GiveSubCommand())
         subCommands.add(BalanceTopSubCommand())
-
     }
-
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if(sender is Player){
@@ -37,7 +33,7 @@ class EcoCommandManager() : CommandExecutor, TabCompleter {
                 p.sendMessage("§7--------------------------------")
                 for (i in 0 until getSubCommands().size) {
                     p.sendMessage(
-                        "${ColorManager.nalyda()}" + getSubCommands()[i].getSyntax() + " - " + getSubCommands()[i].getDescription()
+                        "${ColorManager.main()}" + getSubCommands()[i].getSyntax() + " - " + getSubCommands()[i].getDescription()
                     )
                 }
                 p.sendMessage("§7--------------------------------")

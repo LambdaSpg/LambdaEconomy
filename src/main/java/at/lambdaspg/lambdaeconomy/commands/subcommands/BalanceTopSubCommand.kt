@@ -15,7 +15,7 @@ class BalanceTopSubCommand : SubCommand {
     }
 
     override fun perform(p: Player, args: Array<out String>) {
-        if (p.hasPermission("lambda.cmd.eco.balancetop")) {
+        if (p.hasPermission("lambda.eco.balancetop")) {
             val map = LambdaEconomy.ecoHandler.getMoneyMap()
             val list: List<Map.Entry<UUID, Double>> = ArrayList<Map.Entry<UUID, Double>>(map.entries)
             Collections.sort(

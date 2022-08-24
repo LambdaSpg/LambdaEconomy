@@ -14,7 +14,7 @@ class SetSubCommand : SubCommand {
     }
 
     override fun perform(p: Player, args: Array<out String>) {
-        if(p.hasPermission("lambda.cmd.eco.set")){
+        if(p.hasPermission("lambda.eco.set")){
             if(args.size == 2){
                 var money: Double = 0.0
                 try {

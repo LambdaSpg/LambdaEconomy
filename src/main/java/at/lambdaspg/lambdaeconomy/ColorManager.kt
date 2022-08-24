@@ -16,7 +16,7 @@ object ColorManager {
         return ChatColor.of(Color(255, 51, 51, 255))
     }
 
-    fun nalyda() : ChatColor{
+    fun main() : ChatColor{
         return ChatColor.of(Color(27, 255, 255, 255))
     }
 }

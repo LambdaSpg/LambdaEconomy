@@ -14,32 +14,32 @@ There are 6 different sub commands of /eco every single one of them has its own 
 
 get:<br>
 Gets the balance of a desired Player or yourself<br>
-lambda.cmd.eco.get
+lambda.eco.get
 
 set:<br>
 Sets the balance of a desired Player or yourself<br>
-lambda.cmd.eco.set
+lambda.eco.set
 
 give:<br>
 gives a desired Player or yourself a specific amount of money<br>
-lambda.cmd.eco.give
+lambda.eco.give
 
 take:<br>
 removes a specific amount of money from a desired Player<br>
-lambda.cmd.eco.take
+lambda.eco.take
 
 balancetop:<br>
 Shows a list of the top 10 Player<br>
-lambda.cmd.eco.balancetop
+lambda.eco.balancetop
 
 pay:<br>
 pays a desired Player or yourself a specific amount of money<br>
-lambda.cmd.eco.pay
+lambda.eco.pay
 
 
 balance:<br>
 Shows your balance<br>
-lambda.cmd.eco.balance
+lambda.eco.balance
 
 
 

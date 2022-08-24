@@ -4,7 +4,7 @@ import org.bukkit.Bukkit.getServer
 import org.bukkit.entity.Player
 
 object MessageManager {
-    val server = "${ColorManager.nalyda()}${LambdaEconomy.getConfig().get("Server.name")}"
+    val server = "${ColorManager.main()}${LambdaEconomy.getConfig().get("Server.name")}"
     val prefix = "$server §8»§7"
 
     private val good = "$prefix "
